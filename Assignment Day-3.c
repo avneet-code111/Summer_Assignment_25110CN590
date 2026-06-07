@@ -1,0 +1,140 @@
+
+/// Q-9) Write a program to Check whether a number is prime.
+
+#include <stdio.h>
+
+int main()
+{
+    int num, i, count;  // 3 boxes: num, i, count
+    
+    count = 0;  // to count how many factors
+    
+    printf("Enter a number: ");
+    scanf("%d", &num);  // take number from user
+    
+    // check how many numbers divide 'num' from 1 to num
+    for(i = 1; i <= num; i++)  // i will be 1,2,3...num
+    {
+        if(num % i == 0)  // if i divides num fully
+        {
+            count = count + 1;  // increase count
+        }
+    }
+    
+    // if only 2 factors: 1 and num itself
+    if(count == 2)  
+    {
+        printf("Prime number");
+    }
+    else
+    {
+        printf("Not prime");
+    }
+    
+    return 0;
+}
+
+/// Q-10) Write a program to Print all prime numbers in a range.
+
+#include <stdio.h>
+
+int main()
+{
+    int start, end, i, j, count;  // 5 boxes
+    
+    printf("Enter start number: ");
+    scanf("%d", &start);  // starting number
+    printf("Enter end number: ");
+    scanf("%d", &end);  // ending number
+    
+    printf("Prime numbers from %d to %d are: \n", start, end);
+    
+    // check each number from start to end
+    for(i = start; i <= end; i++)  // outer loop: i = start, start+1...end
+    {
+        count = 0;  // reset count for each new number
+        
+        // check if i is prime
+        for(j = 1; j <= i; j++)  // inner loop: check factors of i
+        {
+            if(i % j == 0)  // if j divides i fully
+            {
+                count = count + 1;  // increase count
+            }
+        }
+        
+        // if i has only 2 factors, it's prime
+        if(count == 2)
+        {
+            printf("%d ", i);  // print the prime number
+        }
+    }
+    
+    return 0;
+}
+
+/// Q-11) Write a program to Find GCD of two numbers.
+
+#include <stdio.h>
+
+int main()
+{
+    int n1, n2, i, gcd;  // 4 boxes
+    
+    printf("Enter two numbers: ");
+    scanf("%d %d", &n1, &n2);  // take both numbers
+    
+    // find which number is smaller
+    int min;
+    if(n1 < n2)
+        min = n1;
+    else
+        min = n2;
+    
+    // check from 1 to min, which divides both
+    for(i = 1; i <= min; i++)
+    {
+        if(n1 % i == 0 && n2 % i == 0)  // if i divides both
+        {
+            gcd = i;  // update gcd
+        }
+    }
+    
+    printf("GCD = %d", gcd);
+    
+    return 0;
+}
+
+/// Q-12) Write a program to Find LCM of two numbers.
+
+#include <stdio.h>
+
+int main()
+{
+    int n1, n2, i, gcd, lcm;  // 5 boxes
+    
+    printf("Enter two numbers: ");
+    scanf("%d %d", &n1, &n2);  // take both numbers
+    
+    // step 1: find GCD first - same code as last question
+    int min;
+    if(n1 < n2)
+        min = n1;
+    else
+        min = n2;
+    
+    for(i = 1; i <= min; i++)
+    {
+        if(n1 % i == 0 && n2 % i == 0)
+        {
+            gcd = i;
+        }
+    }
+    
+    // step 2: find LCM using formula
+    lcm = (n1 * n2) / gcd;  // LCM × GCD = n1 × n2
+    
+    printf("LCM = %d", lcm);
+    
+    return 0;
+}
