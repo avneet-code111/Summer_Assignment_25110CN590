@@ -1,0 +1,125 @@
+
+///Q-93) Write a program to Check string rotation.
+
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char str1[100], str2[100], temp[200];
+
+    scanf("%s", str1);
+    scanf("%s", str2);
+
+    if(strlen(str1)!= strlen(str2)) {
+        printf("Not Rotation");
+    }
+    else {
+        strcpy(temp, str1);
+        strcat(temp, str1);
+
+        if(strstr(temp, str2)!= NULL) {
+            printf("Rotation");
+        }
+        else {
+            printf("Not Rotation");
+        }
+    }
+
+    return 0;
+}
+
+///Q-94) Write a program to Compress a string. 
+
+#include <stdio.h>
+
+int main() {
+    char str[100];
+    int i = 0, count;
+
+    scanf("%s", str);
+
+    while(str[i]!= '\0') {
+        printf("%c", str[i]);
+        count = 1;
+        while(str[i] == str[i + 1]) {
+            count = count + 1;
+            i = i + 1;
+        }
+        printf("%d", count);
+        i = i + 1;
+    }
+
+    return 0;
+}
+
+///Q-95) Write a program to Find longest word.
+
+#include <stdio.h>
+
+int main() {
+    char str[200];
+    int i = 0, len = 0, max = 0, start = 0, max_start = 0;
+
+    scanf("%[^\n]", str);
+
+    while(1) {
+        if(str[i]!= ' ' && str[i]!= '\0') {
+            if(len == 0) {
+                start = i;
+            }
+            len = len + 1;
+        }
+        else {
+            if(len > max) {
+                max = len;
+                max_start = start;
+            }
+            len = 0;
+        }
+        if(str[i] == '\0') {
+            break;
+        }
+        i = i + 1;
+    }
+
+    for(i = 0; i < max; i++) {
+        printf("%c", str[max_start + i]);
+    }
+
+    return 0;
+}
+
+///Q-96)Write a program to Remove duplicate characters.
+
+#include <stdio.h>
+
+int main() {
+    char str[100];
+    int i = 0, j, k;
+
+    scanf("%s", str);
+
+    while(str[i]!= '\0') {
+        j = i + 1;
+        while(str[j]!= '\0') {
+            if(str[i] == str[j]) {
+                k = j;
+                while(str[k]!= '\0') {
+                    str[k] = str[k + 1];
+                    k = k + 1;
+                }
+            }
+            else {
+                j = j + 1;
+            }
+        }
+        i = i + 1;
+    }
+
+    printf("%s", str);
+
+    return 0;
+}
+
+
+
